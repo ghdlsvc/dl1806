@@ -17,14 +17,8 @@ on:
   #   types: started
 
 env:
-  #Config Files
-  CONFIG_FILE: config/rpi4-target.config
-  EXTRA_CONFIG_FILE: config/rpi-extra.config
-  UNIVERSAL_CONFIG_FILE: config/universal.config
   #Workflow Infos
-  SOURCE_BRANCH: 23.05
   DIY_SH: scripts/runme.sh
-  TOOLCHAIN_RELEASE_UPLOAD: true
   FIRMWARE_RELEASE_UPLOAD: true
   TZ: Asia/Jakarta
 
@@ -40,6 +34,7 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
+          sed -i -e 's/\r$//' $(grep -rli "a" "$GITHUB_WORKSPACE/scripts")
           chmod +x $GITHUB_WORKSPACE/scripts/free_disk_space.sh && $GITHUB_WORKSPACE/scripts/free_disk_space.sh
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo -E apt-get -qq update
@@ -81,6 +76,7 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
+          sed -i -e 's/\r$//' $(grep -rli "a" "$GITHUB_WORKSPACE/scripts")
           chmod +x $GITHUB_WORKSPACE/scripts/free_disk_space.sh && $GITHUB_WORKSPACE/scripts/free_disk_space.sh
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo -E apt-get -qq update
@@ -122,6 +118,7 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
+          sed -i -e 's/\r$//' $(grep -rli "a" "$GITHUB_WORKSPACE/scripts")
           chmod +x $GITHUB_WORKSPACE/scripts/free_disk_space.sh && $GITHUB_WORKSPACE/scripts/free_disk_space.sh
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo -E apt-get -qq update
@@ -163,6 +160,7 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
+          sed -i -e 's/\r$//' $(grep -rli "a" "$GITHUB_WORKSPACE/scripts")
           chmod +x $GITHUB_WORKSPACE/scripts/free_disk_space.sh && $GITHUB_WORKSPACE/scripts/free_disk_space.sh
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo -E apt-get -qq update
@@ -204,6 +202,7 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
+          sed -i -e 's/\r$//' $(grep -rli "a" "$GITHUB_WORKSPACE/scripts")
           chmod +x $GITHUB_WORKSPACE/scripts/free_disk_space.sh && $GITHUB_WORKSPACE/scripts/free_disk_space.sh
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo -E apt-get -qq update
